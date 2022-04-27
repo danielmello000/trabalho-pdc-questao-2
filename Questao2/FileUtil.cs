@@ -31,13 +31,13 @@ namespace Questao2
         {
             var tasks = new List<Task>();
 
-            // Dispara uma thread para gerar cada arquivo de curso
+            // Dispara uma task para gerar cada arquivo de curso
             foreach (var curso in Cursos)
             {
                 tasks.Add(Task.Run(() => GerarArquivoCurso(curso)));
             }
 
-            // Aguarda todas as threads terminarem
+            // Aguarda todas as tasks terminarem
             Task.WaitAll(tasks.ToArray());
         }
 

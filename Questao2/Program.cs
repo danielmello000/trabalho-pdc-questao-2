@@ -27,13 +27,13 @@ namespace Questao2
             var formandos = new ConcurrentBag<string>();
             var files = FileUtil.GetArquivosCursos();
 
-            // Dispara uma thread pra cada arquivo
+            // Dispara uma task pra cada arquivo
             foreach (var filename in files)
             {
                 tasks.Add(Task.Run(() => FileUtil.LerArquivo(filename, formandos)));
             }
 
-            // Aguarda todas as threads terminarem
+            // Aguarda todas as tasks terminarem
             Task.WaitAll(tasks.ToArray());
 
             var fileFormandos = $"formandos-concorrente";

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace Questao1
 {
@@ -20,6 +16,11 @@ namespace Questao1
             _saldo = 0;
         }
 
+        /// <summary>
+        /// Deposita o valor passado no saldo
+        /// </summary>
+        /// <param name="valor"></param>
+        /// <returns>Sucesso da operação</returns>
         public bool Depositar (decimal valor)
         {
             if (valor <= 0)
@@ -29,6 +30,11 @@ namespace Questao1
             return true;
         }
 
+        /// <summary>
+        /// Saca o valor passado do saldo
+        /// </summary>
+        /// <param name="valor"></param>
+        /// <returns>Sucesso da operação</returns>
         public bool Sacar(decimal valor)
         {
             if (valor <= 0 || valor > _saldo)
@@ -36,6 +42,11 @@ namespace Questao1
 
             _saldo -= valor;
             return true;
+        }
+
+        public override string ToString()
+        {
+            return $"Conta {Numero}, Titular {Titular}, Saldo {Saldo.ToString("C", CultureInfo.CurrentCulture)}";
         }
     }
 }
